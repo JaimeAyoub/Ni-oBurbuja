@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Player : MonoBehaviour
 {
 
     public Rigidbody2D rb;
     public float speedX; 
+    public PhysicMaterial physicMaterial;
 
     void Start()
     {
@@ -18,11 +20,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
         Move();
     }
 
     private void Move()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+       rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0);     
     }
 }
