@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -23,6 +22,6 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+        rb.AddForce(new Vector2(Input.GetAxisRaw("Horizontal") * speedX, 0));
     }
 }
