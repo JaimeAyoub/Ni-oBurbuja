@@ -6,6 +6,7 @@ public class PlayerScore : MonoBehaviour
 {
     public GameObject StartPosition;
     private float scoreActual;
+    public TMPro.TextMeshProUGUI actualLevelScoreText;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class PlayerScore : MonoBehaviour
         scoreActual = Vector2.Distance(StartPosition.transform.position, transform.position);
         scoreActual = Mathf.RoundToInt(scoreActual);
         //Debug.Log("Score = " + scoreActual.ToString());
+        actualLevelScoreText.text = scoreActual.ToString();
     }
 
     public int GetScore()

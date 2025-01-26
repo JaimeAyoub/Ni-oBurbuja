@@ -140,7 +140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1609556679
   m_SortingLayer: 3
-  m_SortingOrder: 12
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1245014847, guid: 6b1b081302d654f4ba4adb90f3757a24, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -169,6 +169,8 @@ MonoBehaviour:
   jasbcdhasdhkaisb:
     serializedVersion: 2
     m_Bits: 128
+  rataAnimator: {fileID: 4438851671407154156}
+  timer: 2
 --- !u!50 &4872736018104472359
 Rigidbody2D:
   serializedVersion: 4
@@ -211,7 +213,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

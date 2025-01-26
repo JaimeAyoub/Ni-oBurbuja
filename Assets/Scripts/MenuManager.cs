@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public GameObject EndMenu;
+    public static MenuManager InstanceMenuManager;
+    public TMPro.TextMeshProUGUI endHighScore;
+    public TMPro.TextMeshProUGUI endActualScore;
 
     public void Awake()
     {
@@ -13,8 +16,12 @@ public class MenuManager : MonoBehaviour
     }
 
     public void OpenEndMenu()
-    { EndMenu.SetActive(true);
-        Time.timeScale = 0f;      
+    { 
+        EndMenu.SetActive(true);
+        Time.timeScale = 0f;
+        ScoreManager.instanceScoreManager.SetHighestScore();
+        endHighScore.text = ScoreManager.instanceScoreManager.GetHighScore().ToString();
+        endActualScore.text = ScoreManager.instanceScoreManager.GetActualScore().ToString();
     }
 
     public void CloseEndMenu() 
