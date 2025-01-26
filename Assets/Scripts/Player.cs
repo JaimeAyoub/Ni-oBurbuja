@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         {
             playerAnimator.SetBool("IsPlayerRunning", true);
 
-            AudioManager.Instance.PlaySFX("KeyPress");
+           // AudioManager.Instance.PlaySFX("KeyPress");
 
         }
         else
