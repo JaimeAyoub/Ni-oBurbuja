@@ -16,10 +16,10 @@ public class Player : MonoBehaviour
 
     public bool isMoving;
 
+    //public Vector2 friction;
+    //private float TotalVelocity;
 
 
-    public Vector2 friction;
-    private float TotalVelocity;
 
     void Start()
     {
@@ -27,67 +27,76 @@ public class Player : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        //inputXRight = Input.GetAxis("Horizontal");
-        Move();
-        Debug.Log(inputX);
+       Move();
+       // Debug.Log(rb.);
     }
 
     private void Move()
     {
-        if(Input.GetKey(KeyCode.D))
-        {
-            if(inputX < speedlimit)
-                inputX += 0.1f;
-            isMoving = true;
-
-        }
-        else if(Input.GetKey(KeyCode.A))
-        {
-            if(inputX > -speedlimit)
-             inputX -= 0.1f;
-            isMoving = true;
-        }
-        else
-        {
-            isMoving = false;
-            if (inputX > 0.01)
-            {
-                Mathf.Round(TotalVelocity -= friction.x);
-                TotalVelocity = (Time.deltaTime * speedX * inputX);
-            }
-            else
-            {
-                TotalVelocity = (Time.deltaTime * speedX * inputX);
-            }
-            //else
-            //{
-            //    Mathf.Round(TotalVelocity += friction.x);
-            //    TotalVelocity = (Time.deltaTime * speedX * inputX);
-            //}
-        }
-        if(!isMoving && inputX != 0)
-        {
-            if (inputX > 0.01)
-            {
-                Mathf.Round(inputX -= friction.x);
-                TotalVelocity = (Time.deltaTime * speedX * inputX);
-            } else if (inputX < -0.01)
-            {
-                Mathf.Round(inputX += friction.x);
-                TotalVelocity = (Time.deltaTime * speedX * inputX);
-            }
-        }
-        
-
-        
+        rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
+        rb.drag = 0;
+    }
 
     
 
-        TotalVelocity = (Time.deltaTime * speedX * inputX);
+    #region JAIME PHYSICS
+    //private void Move()
+    //{
+    //    if(Input.GetKey(KeyCode.D))
+    //    {
+    //        if(inputX < speedlimit)
+    //            inputX += 0.1f;
+    //        isMoving = true;
 
-        rb.velocity = new Vector2(TotalVelocity, 0);
-    }
+    //    }
+    //    else if(Input.GetKey(KeyCode.A))
+    //    {
+    //        if(inputX > -speedlimit)
+    //         inputX -= 0.1f;
+    //        isMoving = true;
+    //    }
+    //    else
+    //    {
+    //        isMoving = false;
+    //        if (inputX > 0.01)
+    //        {
+    //            Mathf.Round(TotalVelocity -= friction.x);
+    //            TotalVelocity = (Time.deltaTime * speedX * inputX);
+    //        }
+    //        else
+    //        {
+    //            TotalVelocity = (Time.deltaTime * speedX * inputX);
+    //        }
+    //        //else
+    //        //{
+    //        //    Mathf.Round(TotalVelocity += friction.x);
+    //        //    TotalVelocity = (Time.deltaTime * speedX * inputX);
+    //        //}
+    //    }
+    //    if(!isMoving && inputX != 0)
+    //    {
+    //        if (inputX > 0.01)
+    //        {
+    //            Mathf.Round(inputX -= friction.x);
+    //            TotalVelocity = (Time.deltaTime * speedX * inputX);
+    //        } else if (inputX < -0.01)
+    //        {
+    //            Mathf.Round(inputX += friction.x);
+    //            TotalVelocity = (Time.deltaTime * speedX * inputX);
+    //        }
+    //    }
+
+
+
+
+
+
+    //    TotalVelocity = (Time.deltaTime * speedX * inputX);
+
+    //    rb.velocity = new Vector2(TotalVelocity, 0);
+    //}
+    #endregion
 }
