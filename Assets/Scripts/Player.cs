@@ -83,6 +83,9 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Horizontal") != 0)
         {
             playerAnimator.SetBool("IsPlayerRunning", true);
+
+           // AudioManager.Instance.PlaySFX("KeyPress");
+
         }
         else
         {

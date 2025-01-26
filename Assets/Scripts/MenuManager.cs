@@ -4,38 +4,44 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public static MenuManager Instance;
+    public GameObject EndMenu;
+    public AudioManager audioManager;
 
-    public GameObject MainMenu;
-    public GameObject CreditsMenu;
-    
-    private void Awake()
+    public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        EndMenu = GameObject.Find("EndGameMenu");
+        EndMenu.SetActive(false);
+        audioManager = GameObject.FindGameObjectWithTag("Sonido").GetComponent<AudioManager>();
+        audioManager.PlaySFX(audioManager.BGM);
 
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
-    private void ChangeMainScene()
-    {
-        SceneManager.LoadScene("SampleScene");
+
+    public void OpenEndMenu()
+    { EndMenu.SetActive(true);
+        Time.timeScale = 0f;
+        audioManager.PlaySFX(audioManager.BGM);
+       
+    }
+
+    public void CloseEndMenu() 
+    { EndMenu.SetActive(false); 
         Time.timeScale = 1f;
     }
 
-    private void ChangeMenuScene()
+    public void ChangeMainScene()
+    {
+        SceneManager.LoadScene("NivelPrueba");
+        Time.timeScale = 1f;
+    }
+
+    public void ChangeMenuScene()
     {
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
     }
 
-    private void QuitApplication()
+    public void QuitApplication()
     {
         Application.Quit();
     }
