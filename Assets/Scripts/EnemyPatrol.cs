@@ -83,9 +83,4 @@ public class EnemyPatrol : MonoBehaviour
     {
         transform.Translate(Vector2.right * speedX * Time.deltaTime);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
 }

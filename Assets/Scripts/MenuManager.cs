@@ -4,38 +4,44 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public static MenuManager Instance;
+    public GameObject EndMenu;
+    public static MenuManager InstanceMenuManager;
+    public TMPro.TextMeshProUGUI endHighScore;
+    public TMPro.TextMeshProUGUI endActualScore;
 
-    public GameObject MainMenu;
-    public GameObject CreditsMenu;
-    
-    private void Awake()
+    public void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        EndMenu = GameObject.Find("EndGameMenu");
+        EndMenu.SetActive(false);
     }
 
-    private void ChangeMainScene()
+    public void OpenEndMenu()
+    { 
+        EndMenu.SetActive(true);
+        Time.timeScale = 0f;
+        ScoreManager.instanceScoreManager.SetHighestScore();
+        endHighScore.text = ScoreManager.instanceScoreManager.GetHighScore().ToString();
+        endActualScore.text = ScoreManager.instanceScoreManager.GetActualScore().ToString();
+    }
+
+    public void CloseEndMenu() 
+    { EndMenu.SetActive(false); 
+        Time.timeScale = 1f;
+    }
+
+    public void ChangeMainScene()
     {
         SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1f;
     }
 
-    private void ChangeMenuScene()
+    public void ChangeMenuScene()
     {
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1f;
     }
 
-    private void QuitApplication()
+    public void QuitApplication()
     {
         Application.Quit();
     }

@@ -15,10 +15,13 @@ public class ScoreManager : MonoBehaviour
     public GameObject[] cuadrantes;
     public Transform[] spawns;
     public GameObject wea;
+    public static ScoreManager instanceScoreManager;
+    private int highScore;
+    
 
     void Start()
     {
-        //highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         WeaAttack();
     }
 
@@ -34,7 +37,18 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", actualScore);
             highScoreText.text = actualScore.ToString();
+            highScore = actualScore;
         }
+    }
+
+    public int GetHighScore()
+    {
+        return highScore;
+    }
+
+    public int GetActualScore()
+    {
+        return actualScore;
     }
 
     void WeaAttack()

@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     //public Vector2 friction;
     //private float TotalVelocity;
 
-    public MenuManager menuManager;
+
 
     void Start()
     {
@@ -58,21 +58,20 @@ public class Player : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
+
+
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.layer == LayerMask.NameToLayer("Trap"))
+            //Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Die();
+            MenuManager.InstanceMenuManager.OpenEndMenu();
         }
     }
 
-    private void Die()
-    {
-        throw new NotImplementedException();
-    }
-
+   
     void Flip()
     {
         isFacingRight = !isFacingRight;
