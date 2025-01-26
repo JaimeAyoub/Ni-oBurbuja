@@ -7,7 +7,7 @@ public class TilemapManager : MonoBehaviour
     public Tile plataformaTile; // Tile para plataformas
     public Tile paredTile; // Tile para las paredes
     public Tile obstaculoTile; // Tile para obstáculos
-    public GameObject aguaPrefab; // Prefab para agua
+   // public GameObject aguaPrefab; // Prefab para agua
     public GameObject enemigoPrefab; // Prefab para los enemigos
 
     public int anchoNivel = 10; // Ancho del nivel en tiles
@@ -57,19 +57,19 @@ public class TilemapManager : MonoBehaviour
                 tilemap.SetTile(plataformaPos, plataformaTile);
 
                 // Solo generar un agua por plataforma
-                if (!aguaGenerada && Random.value < 0.2f) // Ajusta la probabilidad aquí
-                {
-                    Vector3Int aguaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos) + 1, 0);
+                //if (!aguaGenerada && Random.value < 0.2f) // Ajusta la probabilidad aquí
+                //{
+                //    Vector3Int aguaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos) + 1, 0);
 
-                    // Verificar si la posición encima de la plataforma está vacía antes de colocar el agua
-                    if (tilemap.GetTile(aguaPos) == null)  // Si no hay ningún tile, colocar agua
-                    {
-                        // Instanciar el prefab de agua
-                        Vector3 aguaWorldPos = tilemap.CellToWorld(aguaPos);
-                        Instantiate(aguaPrefab, aguaWorldPos, Quaternion.identity);
-                        aguaGenerada = true; // Marca que el agua ya se ha generado
-                    }
-                }
+                //    // Verificar si la posición encima de la plataforma está vacía antes de colocar el agua
+                //    if (tilemap.GetTile(aguaPos) == null)  // Si no hay ningún tile, colocar agua
+                //    {
+                //        // Instanciar el prefab de agua
+                //        Vector3 aguaWorldPos = tilemap.CellToWorld(aguaPos);
+                //        Instantiate(aguaPrefab, aguaWorldPos, Quaternion.identity);
+                //        aguaGenerada = true; // Marca que el agua ya se ha generado
+                //    }
+                //}
             }
 
             // Colocar enemigo con una probabilidad (en el centro de la plataforma)
