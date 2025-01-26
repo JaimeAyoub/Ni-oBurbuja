@@ -1,117 +1,105 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class TilemapManager : MonoBehaviour
 {
-    public Tilemap platformTilemap; // Tilemap para las plataformas
-    public Tile platformTile; // Tile para representar las plataformas
-    public Tile barrierTile; // Tile para representar las barreras
-    public GameObject[] enemyPrefabs; // Prefabs de los enemigos
+    public Tilemap tilemap; // Tilemap base
+    public Tile plataformaTile; // Tile para plataformas
+    public Tile paredTile; // Tile para las paredes
+    public Tile obstaculoTile; // Tile para obstáculos
+   // public GameObject aguaPrefab; // Prefab para agua
+    public GameObject enemigoPrefab; // Prefab para los enemigos
 
-    public int initialPlatforms = 10; // Cantidad de plataformas iniciales
-    public float platformSpacing = 3f; // Distancia entre plataformas
-    public float platformWidth = 2f; // Ancho virtual de las plataformas
+    public int anchoNivel = 10; // Ancho del nivel en tiles
+    public float frecuenciaPlataformas = 2f; // Espaciado mínimo entre plataformas
+    public float alturaMaximaPlataforma = 4f; // Altura máxima entre plataformas
+    public float probabilidadEnemigo = 0.3f; // Probabilidad de que un enemigo aparezca en una plataforma
+    public float probabilidadObstaculo = 0.2f; // Probabilidad de que un obstáculo aparezca en una plataforma
+    public int anchuraPlataforma = 3; // Anchura de las plataformas en tiles
 
-    private Transform player;
-    private float lastSpawnedY;
-    private float screenBottomY;
-    private BoundsInt leftBarrierBounds;
-    private BoundsInt rightBarrierBounds;
+    public Transform jugador; // Referencia al jugador
+    public float distanciaParaGenerar = 10f; // Distancia desde el borde inferior para generar más nivel
+
+    private float ultimaAlturaGenerada = 0; // Altura más baja generada hasta ahora
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
-
-        // Obtener la posición inferior de la pantalla
-        screenBottomY = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
-
-        // Generar plataformas iniciales
-        for (int i = 0; i < initialPlatforms; i++)
-        {
-            SpawnPlatform(-i * platformSpacing);
-        }
-
-        lastSpawnedY = -initialPlatforms * platformSpacing;
-
-        // Crear barreras laterales
-        CreateBarriers();
+        // Generar la primera sección del nivel
+        GenerarSeccion(0, -20); // Generar hacia abajo inicialmente
+        ultimaAlturaGenerada = -20;
     }
 
     void Update()
     {
-        // Generar nuevas plataformas cuando el jugador se acerca al final
-        while (lastSpawnedY > player.position.y - (platformSpacing * initialPlatforms))
+        // Revisar si el jugador está lo suficientemente cerca del borde inferior para generar más nivel
+        if (jugador.position.y < ultimaAlturaGenerada + distanciaParaGenerar)
         {
-            SpawnPlatform(lastSpawnedY - platformSpacing);
-            lastSpawnedY -= platformSpacing;
-        }
-
-        // Actualizar las barreras laterales para seguir al jugador
-        UpdateBarriers();
-    }
-
-    void SpawnPlatform(float yPosition)
-    {
-        // Calcular una posición aleatoria dentro del ancho permitido
-        float xPosition = Random.Range(-platformWidth / 2f, platformWidth / 2f);
-
-        // Convertir las coordenadas del mundo a celdas del Tilemap
-        Vector3Int tilePosition = platformTilemap.WorldToCell(new Vector3(xPosition, yPosition, 0));
-
-        // Colocar el tile en el Tilemap
-        platformTilemap.SetTile(tilePosition, platformTile);
-
-        // Generar un enemigo encima de la plataforma
-        SpawnEnemyAbovePlatform(tilePosition);
-    }
-
-    void SpawnEnemyAbovePlatform(Vector3Int tilePosition)
-    {
-        if (enemyPrefabs.Length > 0)
-        {
-            // Obtener una posición mundial para el enemigo, ligeramente por encima del tile
-            Vector3 spawnPosition = platformTilemap.CellToWorld(tilePosition) + new Vector3(0.5f, 1f, 0);
-            GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            GenerarSeccion(ultimaAlturaGenerada, ultimaAlturaGenerada - 20); // Generar más nivel hacia abajo
+            ultimaAlturaGenerada -= 20; // Actualizar el rastreo de la altura generada
         }
     }
 
-    void CreateBarriers()
+    void GenerarSeccion(float inicioAltura, float finAltura)
     {
-        float cameraWidth = Camera.main.orthographicSize * Camera.main.aspect;
+        float yPos = inicioAltura;
 
-        // Definir los límites de las barreras izquierda y derecha
-        leftBarrierBounds = new BoundsInt(
-            platformTilemap.WorldToCell(new Vector3(-cameraWidth - 0.5f, player.position.y - 10f, 0)),
-            new Vector3Int(1, 20, 1)
-        );
-
-        rightBarrierBounds = new BoundsInt(
-            platformTilemap.WorldToCell(new Vector3(cameraWidth + 0.5f, player.position.y - 10f, 0)),
-            new Vector3Int(1, 20, 1)
-        );
-
-        // Colocar los tiles iniciales de las barreras
-        for (int y = leftBarrierBounds.yMin; y < leftBarrierBounds.yMax; y++)
+        // Generar plataformas, enemigos y obstáculos
+        while (yPos > finAltura) // Invertido porque generamos hacia abajo
         {
-            platformTilemap.SetTile(new Vector3Int(leftBarrierBounds.xMin, y, 0), barrierTile);
-            platformTilemap.SetTile(new Vector3Int(rightBarrierBounds.xMin, y, 0), barrierTile);
+            // Generar una posición aleatoria para la plataforma dentro del ancho del nivel
+            int xCentro = Random.Range(-anchoNivel / 2, anchoNivel / 2);
+            bool aguaGenerada = false; // Bandera para asegurarse de que solo aparezca un agua por plataforma
+
+            // Generar tiles consecutivos para una plataforma más ancha
+            for (int xOffset = -anchuraPlataforma / 2; xOffset <= anchuraPlataforma / 2; xOffset++)
+            {
+                Vector3Int plataformaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos), 0);
+                tilemap.SetTile(plataformaPos, plataformaTile);
+
+                // Solo generar un agua por plataforma
+                //if (!aguaGenerada && Random.value < 0.2f) // Ajusta la probabilidad aquí
+                //{
+                //    Vector3Int aguaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos) + 1, 0);
+
+                //    // Verificar si la posición encima de la plataforma está vacía antes de colocar el agua
+                //    if (tilemap.GetTile(aguaPos) == null)  // Si no hay ningún tile, colocar agua
+                //    {
+                //        // Instanciar el prefab de agua
+                //        Vector3 aguaWorldPos = tilemap.CellToWorld(aguaPos);
+                //        Instantiate(aguaPrefab, aguaWorldPos, Quaternion.identity);
+                //        aguaGenerada = true; // Marca que el agua ya se ha generado
+                //    }
+                //}
+            }
+
+            // Colocar enemigo con una probabilidad (en el centro de la plataforma)
+            if (Random.value < probabilidadEnemigo)
+            {
+                Vector3 enemigoWorldPos = tilemap.CellToWorld(new Vector3Int(xCentro, Mathf.RoundToInt(yPos), 0)) + Vector3.up * 0.5f;
+                Instantiate(enemigoPrefab, enemigoWorldPos, Quaternion.identity);
+            }
+
+            // Colocar obstáculo con una probabilidad (en una posición aleatoria dentro de la plataforma)
+            if (Random.value < probabilidadObstaculo)
+            {
+                int obstaculoX = Random.Range(-anchuraPlataforma / 2, anchuraPlataforma / 2 + 1);
+                Vector3Int obstaculoPos = new Vector3Int(xCentro + obstaculoX, Mathf.RoundToInt(yPos), 0);
+                tilemap.SetTile(obstaculoPos, obstaculoTile);
+            }
+
+            // Reducir altura para la siguiente plataforma
+            yPos -= Random.Range(frecuenciaPlataformas, alturaMaximaPlataforma);
+        }
+
+        // Generar paredes a lo largo de los bordes del nivel
+        for (int y = Mathf.RoundToInt(inicioAltura); y > Mathf.RoundToInt(finAltura); y--)
+        {
+            Vector3Int paredIzquierda = new Vector3Int(-anchoNivel / 2 - 1, y, 0);
+            Vector3Int paredDerecha = new Vector3Int(anchoNivel / 2 + 1, y, 0);
+
+            tilemap.SetTile(paredIzquierda, paredTile);
+            tilemap.SetTile(paredDerecha, paredTile);
         }
     }
 
-    void UpdateBarriers()
-    {
-        // Actualizar las posiciones verticales de las barreras según el jugador
-        leftBarrierBounds.position = platformTilemap.WorldToCell(new Vector3(leftBarrierBounds.position.x, player.position.y - 10f, 0));
-        rightBarrierBounds.position = platformTilemap.WorldToCell(new Vector3(rightBarrierBounds.position.x, player.position.y - 10f, 0));
-
-        // Actualizar los tiles de las barreras
-        for (int y = leftBarrierBounds.yMin; y < leftBarrierBounds.yMax; y++)
-        {
-            platformTilemap.SetTile(new Vector3Int(leftBarrierBounds.xMin, y, 0), barrierTile);
-            platformTilemap.SetTile(new Vector3Int(rightBarrierBounds.xMin, y, 0), barrierTile);
-        }
-    }
 }

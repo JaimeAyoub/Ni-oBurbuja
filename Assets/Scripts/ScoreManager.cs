@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor.Experimental.GraphView;
+using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -12,24 +13,47 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshProUGUI highScoreText;
     public PlayerScore playerScore;
     public GameObject[] cuadrantes;
+    public Transform[] spawns;
+    public GameObject wea;
 
     void Start()
     {
-        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        //highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+        WeaAttack();
     }
 
     private void Update()
     {
-        SetHighestScore(); 
+        
     }
 
     public void SetHighestScore()
     {
         actualScore = playerScore.GetScore();
-        if(actualScore > PlayerPrefs.GetInt("HighScore", 0))
+        if (actualScore > PlayerPrefs.GetInt("HighScore", 0))
         {
             PlayerPrefs.SetInt("HighScore", actualScore);
             highScoreText.text = actualScore.ToString();
         }
+    }
+
+    void WeaAttack()
+    {
+        StartCoroutine(FadeCuadrantes(Random.Range(0, 3)));
+    }
+
+    IEnumerator FadeCuadrantes(int random)
+    {
+        #region CUADRANTES
+        //if (cuadrantes.Length > random)
+        //{
+        //    SpriteRenderer spriteRenderer = cuadrantes[random].GetComponent<SpriteRenderer>();
+        //    Color initialColor = spriteRenderer.color;
+        //    spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
+        //    spriteRenderer.DOFade(0f, 1f).SetLoops(5, LoopType.Yoyo);
+        //}
+        #endregion
+        yield return new WaitForSeconds(4f);
+        Instantiate(wea, spawns[random].position, Quaternion.identity);
     }
 }
