@@ -56,17 +56,20 @@ public class EnemyPatrol : MonoBehaviour
 
         if (!groundHit)
         {
+            rataAnimator.SetBool("RataFlip", true);
             continueAnim = true;
         }
 
         if (timer <= 0)
         {
             continueAnim = false;
+            
             timer = 25;
         }
 
         if (continueAnim == false)
         {
+            rataAnimator.SetBool("RataFlip", false);
             EnemyMove();
         }
     }
