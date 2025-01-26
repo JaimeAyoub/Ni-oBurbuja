@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,9 @@ public class Player : MonoBehaviour
 
     public float speedX;
     public float speedlimit;
+
+    public float timerUp;
+    public float tiempoPresion;
 
 
     public Animator playerAnimator;
@@ -33,17 +37,18 @@ public class Player : MonoBehaviour
             rb = GetComponent<Rigidbody2D>();
     }
 
-    
+
     void Update()
     {
         Move();
         // Debug.Log(rb.);
         HandleAnimationRunning();
-        if(Input.GetAxis("Horizontal") < 0 && isFacingRight)
+        if (Input.GetAxis("Horizontal") < 0 && isFacingRight)
         {
-            Flip(); 
-        }else if (Input.GetAxis("Horizontal") >= 0 && !isFacingRight)
-        {  isFacingRight = true;}
+            Flip();
+        }
+        else if (Input.GetAxis("Horizontal") >= 0 && !isFacingRight)
+        { isFacingRight = true; }
 
         if (isFacingRight)
         {
@@ -54,7 +59,10 @@ public class Player : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
 
+
     }
+
+
 
     void Flip()
     {
@@ -77,10 +85,28 @@ public class Player : MonoBehaviour
     {
         isPlayerRunning = true;
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
-        rb.drag = 0;
+        if (Input.GetKey(KeyCode.K))
+        {
+            if (tiempoPresion < timerUp)
+            {
+                tiempoPresion += Time.deltaTime;
+                Up();
+            }
+            else
+            {
+                tiempoPresion = 0;
+            }
+
+        }
+
+
+    }
+    void Up()
+    {
+        rb.AddForce(Vector2.up * 5);
     }
 
-    
+
 
     #region JAIME PHYSICS
     //private void Move()
