@@ -16,7 +16,7 @@ public class PlayerScore : MonoBehaviour
     {
         scoreActual = Vector2.Distance(StartPosition.position, transform.position);
         scoreActual = Mathf.RoundToInt(scoreActual);
-        //Debug.Log("Score = " + scoreActual.ToString());
+        Debug.Log("Score = " + scoreActual.ToString());
     }
 
     public int GetScore()

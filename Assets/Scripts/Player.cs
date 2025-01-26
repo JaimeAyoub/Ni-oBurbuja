@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     //public Vector2 friction;
     //private float TotalVelocity;
 
-
+    public MenuManager menuManager;
 
     void Start()
     {
@@ -58,11 +58,20 @@ public class Player : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
-
-
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
+    }
 
+    void Die()
+    {
+        menuManager.OpenEndMenu();
+    }
 
     void Flip()
     {
