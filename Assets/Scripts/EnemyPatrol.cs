@@ -6,7 +6,6 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     private bool isFacingRight = true;
-    private float health;
     private float speedX;
     private float inputX;
     private Rigidbody2D rb;
@@ -21,6 +20,10 @@ public class EnemyPatrol : MonoBehaviour
         speedX = 3f;
 
     }
+
+
+    #region MOVEMENT
+
     private void FixedUpdate()
     {
         EnemyMove();
@@ -49,18 +52,12 @@ public class EnemyPatrol : MonoBehaviour
         isFacingRight = !isFacingRight;
     }
 
-    void Update()
-    {
-        
-    }
-
     void EnemyMove()
     {
         transform.Translate(Vector2.right * speedX * Time.deltaTime);
     }
 
-    
-
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -68,5 +65,5 @@ public class EnemyPatrol : MonoBehaviour
         Gizmos.DrawLine(groundCheck.transform.position, new Vector3(groundCheck.transform.position.x, groundCheck.transform.position.y - 0.4f, groundCheck.transform.position.z));
         Gizmos.DrawLine(wallCheck.transform.position, new Vector2(wallCheck.transform.position.x + 0.5f, wallCheck.transform.position.y));
     }
-
+    #endregion
 }
