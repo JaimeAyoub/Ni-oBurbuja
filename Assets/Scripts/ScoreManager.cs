@@ -9,12 +9,8 @@ using DG.Tweening;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int actualScore;
-    public TMPro.TextMeshProUGUI actualScoreText;
+    public int actualScore;
     public TMPro.TextMeshProUGUI highScoreText;
-
-    private int highScore;
-
     public PlayerScore playerScore;
     public GameObject[] cuadrantes;
     public Transform[] spawns;
@@ -22,25 +18,13 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
-        
+        //highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
         WeaAttack();
     }
 
     private void Update()
     {
-        actualScore = playerScore.GetScore();
-        actualScoreText.text = actualScore.ToString() + " m";
-    }
-
-    public int GetActualScore()
-    {
-        return actualScore;
-    }
-
-    public int GetHighScore()
-    {
-        return highScore;
+        
     }
 
     public void SetHighestScore()
@@ -50,7 +34,6 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", actualScore);
             highScoreText.text = actualScore.ToString();
-            highScore = actualScore;
         }
     }
 
