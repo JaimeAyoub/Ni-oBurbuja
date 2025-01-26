@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,24 +14,25 @@ public class EnemyPatrol : MonoBehaviour
     public GameObject wallCheck;
     public LayerMask jasbcdhasdhkaisb;
     public Animator rataAnimator;
+    private bool continueAnim;
+    public float timer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         inputX = Input.GetAxis("Horizontal");
         speedX = 3f;
-
+        timer = 25f;
     }
     private void FixedUpdate()
     {
-        EnemyMove();
-
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.transform.position, Vector2.down, 0.4f, jasbcdhasdhkaisb);
-        RaycastHit2D hitwall = Physics2D.Raycast(wallCheck.transform.position, Vector2.right, 0.4f);
-        //Debug.Log(hitwall.collider);
+        RaycastHit2D hitwall = Physics2D.Raycast(wallCheck.transform.position, Vector2.right, 0.4f, jasbcdhasdhkaisb);
+
+        MoveAnim(hit);
+
         if(!hit.collider)
         {
-            StartCoroutine(RataWait());
             Flip();
         }
         if (hitwall)
@@ -48,14 +50,30 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
+    void MoveAnim(RaycastHit2D groundHit)
+    {
+        timer -= 0.1f;
+
+        if (!groundHit)
+        {
+            continueAnim = true;
+        }
+
+        if (timer <= 0)
+        {
+            continueAnim = false;
+            timer = 25;
+        }
+
+        if (continueAnim == false)
+        {
+            EnemyMove();
+        }
+    }
+
     void Flip()
     {
         isFacingRight = !isFacingRight;
-    }
-
-    void Update()
-    {
-        
     }
 
     void EnemyMove()
@@ -63,19 +81,8 @@ public class EnemyPatrol : MonoBehaviour
         transform.Translate(Vector2.right * speedX * Time.deltaTime);
     }
 
-    IEnumerator RataWait()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //rataAnimator.SetBool();
-        yield return new WaitForSeconds(2);
-        //rataAnimator.SetBool();
+        
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Vector3 direction = ; 
-        Gizmos.DrawLine(groundCheck.transform.position, new Vector3(groundCheck.transform.position.x, groundCheck.transform.position.y - 0.4f, groundCheck.transform.position.z));
-        Gizmos.DrawLine(wallCheck.transform.position, new Vector2(wallCheck.transform.position.x + 0.5f, wallCheck.transform.position.y));
-    }
-
 }

@@ -63,7 +63,8 @@ Transform:
   m_LocalPosition: {x: -17.399239, y: 0.57326615, z: 8.593409}
   m_LocalScale: {x: 13.694672, y: 22.554823, z: 6.7099}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3979800064126295393}
   m_Father: {fileID: 2000878508873279106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &231279420666653811
@@ -147,7 +148,8 @@ Transform:
   m_LocalPosition: {x: -3.9092388, y: 0.57326615, z: 8.593409}
   m_LocalScale: {x: 13.252052, y: 22.554823, z: 6.7099}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5219105134473043288}
   m_Father: {fileID: 2000878508873279106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5326352813626594386
@@ -202,6 +204,99 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5508210129171481345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5219105134473043288}
+  m_Layer: 0
+  m_Name: SpawnWea2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5219105134473043288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508210129171481345}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4609667, y: -0.25799286, z: -1.2745451}
+  m_LocalScale: {x: 0.07546001, y: 0.044336416, z: 0.14903352}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5598638429399042510}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6267472314745349967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3979800064126295393}
+  m_Layer: 0
+  m_Name: SpawnWea3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3979800064126295393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6267472314745349967}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.4311227, y: -0.25799286, z: -1.2745451}
+  m_LocalScale: {x: 0.0730211, y: 0.044336416, z: 0.14903352}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5390998528349675157}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6285444363893799751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7020675717184586235}
+  m_Layer: 0
+  m_Name: SpawnWea1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7020675717184586235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6285444363893799751}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.54038763, y: -0.25799286, z: -1.2745451}
+  m_LocalScale: {x: 0.07546001, y: 0.044336416, z: 0.14903352}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 374063011747408001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7628076390011172037
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +326,8 @@ Transform:
   m_LocalPosition: {x: 9.360762, y: 0.57326615, z: 8.593409}
   m_LocalScale: {x: 13.252052, y: 22.554823, z: 6.7099}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7020675717184586235}
   m_Father: {fileID: 2000878508873279106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4719265481944295621

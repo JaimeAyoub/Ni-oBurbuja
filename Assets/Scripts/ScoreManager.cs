@@ -13,12 +13,18 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshProUGUI highScoreText;
     public PlayerScore playerScore;
     public GameObject[] cuadrantes;
+    public Transform[] spawns;
+    public GameObject wea;
 
     void Start()
     {
         //highScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
-
         WeaAttack();
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void SetHighestScore()
@@ -33,7 +39,7 @@ public class ScoreManager : MonoBehaviour
 
     void WeaAttack()
     {
-        StartCoroutine(FadeCuadrantes(Random.Range(0, cuadrantes.Length)));
+        StartCoroutine(FadeCuadrantes(Random.Range(0, 3)));
     }
 
     IEnumerator FadeCuadrantes(int random)
@@ -43,9 +49,9 @@ public class ScoreManager : MonoBehaviour
             SpriteRenderer spriteRenderer = cuadrantes[random].GetComponent<SpriteRenderer>();
             Color initialColor = spriteRenderer.color;
             spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
-            spriteRenderer.DOFade(0f, 1f).SetLoops(5, LoopType.Yoyo);  
+            spriteRenderer.DOFade(0f, 1f).SetLoops(5, LoopType.Yoyo);
         }
-        yield return new WaitForSeconds(4f);  
+        yield return new WaitForSeconds(4f);
+        Instantiate(wea, spawns[random].position, Quaternion.identity);
     }
-
 }

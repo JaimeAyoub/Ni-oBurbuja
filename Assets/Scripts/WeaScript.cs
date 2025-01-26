@@ -12,14 +12,6 @@ public class WeaScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<Player>().Die();
-        }
-    }
-
     private void FixedUpdate()
     {
         rb.velocity = Vector2.up * speedX;

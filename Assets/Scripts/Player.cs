@@ -29,7 +29,15 @@ public class Player : MonoBehaviour
         rb.drag = 0;
     }
 
-    public void Die()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
+    }
+
+    void Die()
     { 
         //TODO DESPLEGAR GAME OVER MENU
         Time.timeScale = 0f;
