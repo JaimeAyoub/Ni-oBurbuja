@@ -8290,11 +8290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6896958605469001908, guid: 381460b7cca61e64189edddfeea201e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.93
+      value: -4.79
       objectReference: {fileID: 0}
     - target: {fileID: 6896958605469001908, guid: 381460b7cca61e64189edddfeea201e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.79
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 6896958605469001908, guid: 381460b7cca61e64189edddfeea201e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8341,6 +8341,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2172848623372143624, guid: 5aaa4dcb09b374c4e81863fab4ccab62, type: 3}
+      propertyPath: wea
+      value: 
+      objectReference: {fileID: 6215947247904436219, guid: 9a99cfb03e7f2f4418f29181998287f3, type: 3}
+    - target: {fileID: 2172848623372143624, guid: 5aaa4dcb09b374c4e81863fab4ccab62, type: 3}
+      propertyPath: highScoreText
+      value: 
+      objectReference: {fileID: 1719074992}
     - target: {fileID: 4098587129073792212, guid: 5aaa4dcb09b374c4e81863fab4ccab62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.04
@@ -8381,6 +8389,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5725987874207890886, guid: 5aaa4dcb09b374c4e81863fab4ccab62, type: 3}
+      propertyPath: StartPosition
+      value: 
+      objectReference: {fileID: 2115419975}
     - target: {fileID: 8815732633023304510, guid: 5aaa4dcb09b374c4e81863fab4ccab62, type: 3}
       propertyPath: m_Name
       value: Player

@@ -14,7 +14,8 @@ public class MenuManager : MonoBehaviour
 
     public void OpenEndMenu()
     { EndMenu.SetActive(true);
-        Time.timeScale = 0f;      
+        Time.timeScale = 0f;
+        AudioManager.Instance.StopMusic();
     }
 
     public void CloseEndMenu() 
@@ -24,7 +25,7 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeMainScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("NivelPrueba");
         Time.timeScale = 1f;
     }
 
