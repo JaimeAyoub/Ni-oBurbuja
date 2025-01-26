@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 142
       width: 29
       height: 24
-    spriteID: ff8e683015c518a4281982767cee2b79
+    spriteID: 062ccdd805372fc4490d69c5508a26ae
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 174
       width: 29
       height: 24
-    spriteID: eec0532064d3aad47bd14eef30d409dd
+    spriteID: 62e5118cf265b804ab5a19a07263da55
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 135
       width: 29
       height: 23
-    spriteID: e4e042643c6fdc7479c0087eb795e333
+    spriteID: 158c25f0ef59dac408a5620c9e7c0b1f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 206
       width: 29
       height: 24
-    spriteID: c99ccd322a3e9f14890ebd0d709d0ef6
+    spriteID: c6678464f17a6924d8ee838ce1766f70
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -212,7 +212,7 @@ ScriptedImporter:
       y: 166
       width: 29
       height: 23
-    spriteID: fe003b257f59c6648af4452c9734ddf2
+    spriteID: ba6e32537423ec142b76d8fad6a28c3f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -232,7 +232,7 @@ ScriptedImporter:
       y: 4
       width: 29
       height: 24
-    spriteID: ba88e6ec64960bf4a943577d019cfc62
+    spriteID: cc9443be0e7824a47ad5d837efff87ee
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -252,7 +252,7 @@ ScriptedImporter:
       y: 108
       width: 29
       height: 26
-    spriteID: 92249d43ca3509d45a364e26c0634b86
+    spriteID: 78b7fed04836b5e4fa545614113b5c47
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -272,7 +272,7 @@ ScriptedImporter:
       y: 36
       width: 29
       height: 24
-    spriteID: ebefde834607e894997ab0c3228f66df
+    spriteID: 2c4f835c61cd4b14d9f9c7aa675e8764
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -292,7 +292,7 @@ ScriptedImporter:
       y: 68
       width: 29
       height: 24
-    spriteID: 9ca5b97ef13042941ab0ad36005213cd
+    spriteID: 44542cd5dc4c6d9489c51da4239e7e8f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -312,7 +312,7 @@ ScriptedImporter:
       y: 4
       width: 32
       height: 26
-    spriteID: a12ce448143df9b44bf7128b7b25d7a8
+    spriteID: 302ddd40887a97e4ab7c6552af001226
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -332,7 +332,7 @@ ScriptedImporter:
       y: 38
       width: 29
       height: 27
-    spriteID: f5b29208d120dd04ab43f1ff1177b455
+    spriteID: a94ee503e7b13a04c88d4a61eecc3286
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -352,7 +352,7 @@ ScriptedImporter:
       y: 100
       width: 25
       height: 27
-    spriteID: 6177c1c17e9b1464585dfdd26fe91050
+    spriteID: 025c37c34ca3b864682e27c7e5b967a2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -372,7 +372,7 @@ ScriptedImporter:
       y: 73
       width: 29
       height: 27
-    spriteID: 39c972b0a516cf0429152969e1703600
+    spriteID: a2d6023bd67b4aa44ae490fce906fb25
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -398,7 +398,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: ff8e683015c518a4281982767cee2b79
+      spriteId: 062ccdd805372fc4490d69c5508a26ae
     - name: RataCorre_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -407,7 +407,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: eec0532064d3aad47bd14eef30d409dd
+      spriteId: 62e5118cf265b804ab5a19a07263da55
     - name: RataCorre_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -416,7 +416,7 @@ ScriptedImporter:
         y: 1
         width: 29
         height: 23
-      spriteId: e4e042643c6fdc7479c0087eb795e333
+      spriteId: 158c25f0ef59dac408a5620c9e7c0b1f
     - name: RataCorre_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -425,7 +425,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: c99ccd322a3e9f14890ebd0d709d0ef6
+      spriteId: c6678464f17a6924d8ee838ce1766f70
     - name: RataCorre_Frame_4
       frameIndex: 4
       additiveSortOrder: 0
@@ -434,7 +434,7 @@ ScriptedImporter:
         y: 1
         width: 29
         height: 23
-      spriteId: fe003b257f59c6648af4452c9734ddf2
+      spriteId: ba6e32537423ec142b76d8fad6a28c3f
     - name: RataCorre_Frame_5
       frameIndex: 5
       additiveSortOrder: 0
@@ -443,7 +443,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: ba88e6ec64960bf4a943577d019cfc62
+      spriteId: cc9443be0e7824a47ad5d837efff87ee
     - name: RataCorre_Frame_6
       frameIndex: 6
       additiveSortOrder: 0
@@ -452,7 +452,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 26
-      spriteId: 92249d43ca3509d45a364e26c0634b86
+      spriteId: 78b7fed04836b5e4fa545614113b5c47
     - name: RataCorre_Frame_7
       frameIndex: 7
       additiveSortOrder: 0
@@ -461,7 +461,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: ebefde834607e894997ab0c3228f66df
+      spriteId: 2c4f835c61cd4b14d9f9c7aa675e8764
     - name: RataCorre_Frame_8
       frameIndex: 8
       additiveSortOrder: 0
@@ -470,7 +470,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 24
-      spriteId: 9ca5b97ef13042941ab0ad36005213cd
+      spriteId: 44542cd5dc4c6d9489c51da4239e7e8f
     - name: RataCorre_Frame_9
       frameIndex: 9
       additiveSortOrder: 0
@@ -479,7 +479,7 @@ ScriptedImporter:
         y: 0
         width: 32
         height: 26
-      spriteId: a12ce448143df9b44bf7128b7b25d7a8
+      spriteId: 302ddd40887a97e4ab7c6552af001226
     - name: RataCorre_Frame_10
       frameIndex: 10
       additiveSortOrder: 0
@@ -488,7 +488,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 27
-      spriteId: f5b29208d120dd04ab43f1ff1177b455
+      spriteId: a94ee503e7b13a04c88d4a61eecc3286
     - name: RataCorre_Frame_11
       frameIndex: 11
       additiveSortOrder: 0
@@ -497,7 +497,7 @@ ScriptedImporter:
         y: 0
         width: 25
         height: 27
-      spriteId: 6177c1c17e9b1464585dfdd26fe91050
+      spriteId: 025c37c34ca3b864682e27c7e5b967a2
     - name: RataCorre_Frame_12
       frameIndex: 12
       additiveSortOrder: 0
@@ -506,7 +506,7 @@ ScriptedImporter:
         y: 0
         width: 29
         height: 27
-      spriteId: 39c972b0a516cf0429152969e1703600
+      spriteId: a2d6023bd67b4aa44ae490fce906fb25
     linkedCells: []
     parentIndex: -1
   platformSettings: []
