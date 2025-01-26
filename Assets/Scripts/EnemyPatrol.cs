@@ -6,13 +6,13 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     private bool isFacingRight = true;
-    private float health;
     private float speedX;
     private float inputX;
     private Rigidbody2D rb;
     public GameObject groundCheck;
     public GameObject wallCheck;
     public LayerMask jasbcdhasdhkaisb;
+    public Animator rataAnimator;
 
     void Start()
     {
@@ -30,10 +30,14 @@ public class EnemyPatrol : MonoBehaviour
         //Debug.Log(hitwall.collider);
         if(!hit.collider)
         {
+            StartCoroutine(RataWait());
             Flip();
         }
         if (hitwall)
+        {
             Flip();
+        }
+
         if(isFacingRight)
         {
             transform.eulerAngles = Vector3.zero;
@@ -59,7 +63,12 @@ public class EnemyPatrol : MonoBehaviour
         transform.Translate(Vector2.right * speedX * Time.deltaTime);
     }
 
-    
+    IEnumerator RataWait()
+    {
+        //rataAnimator.SetBool();
+        yield return new WaitForSeconds(2);
+        //rataAnimator.SetBool();
+    }
 
     private void OnDrawGizmos()
     {
