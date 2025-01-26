@@ -5,11 +5,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
     public Rigidbody2D rb;
+
     private float inputX;
-    public float speedlimit;
+
+
     public float speedX;
+    public float speedlimit;
+
+
+    public Animator playerAnimator;
+    public bool isPlayerRunning;
+
     public bool isMoving;
+
+    private bool isFacingRight = true;
+
+    //public Vector2 friction;
+    //private float TotalVelocity;
+
+
 
     void Start()
     {
@@ -20,28 +36,51 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-       Move();
+        Move();
+        // Debug.Log(rb.);
+        HandleAnimationRunning();
+        if(Input.GetAxis("Horizontal") < 0 && isFacingRight)
+        {
+            Flip(); 
+        }else if (Input.GetAxis("Horizontal") >= 0 && !isFacingRight)
+        {  isFacingRight = true;}
+
+        if (isFacingRight)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+    }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+    }
+
+    private void HandleAnimationRunning()
+    {
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            playerAnimator.SetBool("IsPlayerRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsPlayerRunning", false);
+        }
     }
 
     private void Move()
     {
+        isPlayerRunning = true;
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
         rb.drag = 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    { 
-        //TODO DESPLEGAR GAME OVER MENU
-        Time.timeScale = 0f;
-    }
+    
 
     #region JAIME PHYSICS
     //private void Move()
