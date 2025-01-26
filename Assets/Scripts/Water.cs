@@ -30,7 +30,7 @@ public class Water : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, Force, Time.deltaTime * 2), rb.velocity.y);
+                rb.AddForce(new Vector2(Mathf.Lerp(rb.velocity.x, Force, Time.deltaTime * 2), rb.velocity.y));
             }
         }
     }
