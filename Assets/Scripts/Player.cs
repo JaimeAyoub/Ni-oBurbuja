@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
 
     public float speedX;
     public float speedlimit;
-    public float speedlimitNegative;
+
+    public bool isMoving;
+
 
 
     public Vector2 friction;
@@ -23,7 +25,6 @@ public class Player : MonoBehaviour
     {
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
-        speedlimitNegative = -speedlimit;
     }
 
     // Update is called once per frame
@@ -36,59 +37,56 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D))
         {
-            if (inputX <= speedlimit)
-            {
-                inputX += 0.05f;
+            if(inputX < speedlimit)
+                inputX += 0.1f;
+            isMoving = true;
 
-            }
-            else if (inputX > speedlimit)
-            {
-                inputX = speedlimit;
-            }
-
-            TotalVelocity = (speedX * inputX);
+        }
+        else if(Input.GetKey(KeyCode.A))
+        {
+            if(inputX > -speedlimit)
+             inputX -= 0.1f;
+            isMoving = true;
         }
         else
         {
-            if (inputX > 0)
+            isMoving = false;
+            if (inputX > 0.01)
             {
-                inputX -= 0.005f;
-                TotalVelocity = (speedX * inputX);
+                Mathf.Round(TotalVelocity -= friction.x);
+                TotalVelocity = (Time.deltaTime * speedX * inputX);
             }
+            else
+            {
+                TotalVelocity = (Time.deltaTime * speedX * inputX);
+            }
+            //else
+            //{
+            //    Mathf.Round(TotalVelocity += friction.x);
+            //    TotalVelocity = (Time.deltaTime * speedX * inputX);
+            //}
         }
-
-
-        if (Input.GetKey(KeyCode.A))
+        if(!isMoving && inputX != 0)
         {
-            if (inputX >= -speedlimit)
+            if (inputX > 0.01)
             {
-                inputX -= 0.05f;
-
-            }
-            else if (inputX < -speedlimit)
+                Mathf.Round(inputX -= friction.x);
+                TotalVelocity = (Time.deltaTime * speedX * inputX);
+            } else if (inputX < -0.01)
             {
-                inputX = -speedlimit;
-            }
-
-            TotalVelocity = (speedX * inputX);
-        }
-        else
-        {
-            if (inputX < 0)
-            {
-                inputX += 0.005f;
-                TotalVelocity = (speedX * inputX);
+                Mathf.Round(inputX += friction.x);
+                TotalVelocity = (Time.deltaTime * speedX * inputX);
             }
         }
+        
 
-        if (TotalVelocity > 0)
-            TotalVelocity -= friction.x;
-        if (TotalVelocity <= 0)
-            TotalVelocity += friction.x;
+        
 
+    
 
+        TotalVelocity = (Time.deltaTime * speedX * inputX);
 
         rb.velocity = new Vector2(TotalVelocity, 0);
     }
