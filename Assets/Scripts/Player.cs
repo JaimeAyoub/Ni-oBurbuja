@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float speedlimit;
 
 
-    public Animator playerAnimator;
+    //public Animator playerAnimator;
     public bool isPlayerRunning;
 
     public bool isMoving;
@@ -65,11 +65,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Horizontal") != 0)
         {
-            playerAnimator.SetBool("IsPlayerRunning", true);
+            //playerAnimator.SetBool("IsPlayerRunning", true);
         }
         else
         {
-            playerAnimator.SetBool("IsPlayerRunning", false);
+            //playerAnimator.SetBool("IsPlayerRunning", false);
         }
     }
 

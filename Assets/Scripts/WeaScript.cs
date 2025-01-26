@@ -15,5 +15,7 @@ public class WeaScript : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = Vector2.up * speedX;
+
+        Destroy(this.gameObject, 5);
     }
 }
