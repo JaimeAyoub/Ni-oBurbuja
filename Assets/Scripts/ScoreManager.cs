@@ -44,13 +44,15 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator FadeCuadrantes(int random)
     {
-        if (cuadrantes.Length > random)
-        {
-            SpriteRenderer spriteRenderer = cuadrantes[random].GetComponent<SpriteRenderer>();
-            Color initialColor = spriteRenderer.color;
-            spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
-            spriteRenderer.DOFade(0f, 1f).SetLoops(5, LoopType.Yoyo);
-        }
+        #region CUADRANTES
+        //if (cuadrantes.Length > random)
+        //{
+        //    SpriteRenderer spriteRenderer = cuadrantes[random].GetComponent<SpriteRenderer>();
+        //    Color initialColor = spriteRenderer.color;
+        //    spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
+        //    spriteRenderer.DOFade(0f, 1f).SetLoops(5, LoopType.Yoyo);
+        //}
+        #endregion
         yield return new WaitForSeconds(4f);
         Instantiate(wea, spawns[random].position, Quaternion.identity);
     }
