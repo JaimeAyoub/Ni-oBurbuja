@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public int actualScore;
     public TMPro.TextMeshProUGUI highScoreText;
     public PlayerScore playerScore;
-    
+    public GameObject[] cuadrantes;
 
     void Start()
     {
@@ -31,7 +31,5 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", actualScore);
             highScoreText.text = actualScore.ToString();
         }
-
     }
-
 }
