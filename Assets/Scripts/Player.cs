@@ -1,42 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     public Rigidbody2D rb;
-
     private float inputX;
-
-
     public float speedX;
     public float speedlimit;
-
+    public bool isPlayerRunning;
+    private bool isFacingRight = true;
+    public bool isMoving;
+    public StaminaScript staminaScript;
 
     //public Animator playerAnimator;
-    public bool isPlayerRunning;
-
-    public bool isMoving;
-
-    private bool isFacingRight = true;
-
-    //public Vector2 friction;
-    //private float TotalVelocity;
-
-
 
     void Start()
     {
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
+        
+        staminaScript = GetComponent<StaminaScript>();
     }
 
-    
+
     void Update()
     {
-        Move();
+        Move(staminaScript.IsOutOfStamina());
         // Debug.Log(rb.);
         HandleAnimationRunning();
         if(Input.GetAxis("Horizontal") < 0 && isFacingRight)
@@ -73,12 +65,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Move()
+    public void Move(bool outOfStamina)
     {
-        isPlayerRunning = true;
-        rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
-        rb.drag = 0;
+        if(outOfStamina == false)
+        {
+            isPlayerRunning = true;
+            rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
+            rb.drag = 0;
+        }
     }
+
 
     
 

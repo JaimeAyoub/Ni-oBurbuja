@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Threading;
 
 public class StaminaScript : MonoBehaviour
 {
     public float stamina;
     public Image staminaBar;
     public float gasto = 0.2f;
+    private bool isOutOfStamina = false;
+    private float timer = 2;
 
     void Start()
     {
@@ -26,6 +29,21 @@ public class StaminaScript : MonoBehaviour
         {
             AddStamina(gasto);
         }
+
+        timer -= 1f;
+        if(stamina <= 0)
+        {
+            isOutOfStamina = true;
+        }
+        else if (stamina != 0 && timer <= 0)
+        {
+            isOutOfStamina = false;
+        }
+    }
+
+    public bool IsOutOfStamina()
+    {
+        return isOutOfStamina;
     }
 
     void UseStamina(float gasto)
