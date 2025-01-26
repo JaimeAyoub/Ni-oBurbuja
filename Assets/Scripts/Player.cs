@@ -5,21 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     public Rigidbody2D rb;
-
     private float inputX;
-
-
-    public float speedX;
     public float speedlimit;
-
+    public float speedX;
     public bool isMoving;
-
-    //public Vector2 friction;
-    //private float TotalVelocity;
-
-
 
     void Start()
     {
@@ -31,7 +21,6 @@ public class Player : MonoBehaviour
     void Update()
     {
        Move();
-       // Debug.Log(rb.);
     }
 
     private void Move()
@@ -40,7 +29,11 @@ public class Player : MonoBehaviour
         rb.drag = 0;
     }
 
-    
+    public void Die()
+    { 
+        //TODO DESPLEGAR GAME OVER MENU
+        Time.timeScale = 0f;
+    }
 
     #region JAIME PHYSICS
     //private void Move()
