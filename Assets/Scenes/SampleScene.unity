@@ -205,6 +205,7 @@ MonoBehaviour:
   jasbcdhasdhkaisb:
     serializedVersion: 2
     m_Bits: 128
+  rataAnimator: {fileID: 0}
 --- !u!212 &160094937
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5731,16 +5732,14 @@ MonoBehaviour:
   tilemap: {fileID: 1676704001}
   plataformaTile: {fileID: 11400000, guid: 4beb4f7853ef9d2438a199009a629a84, type: 2}
   paredTile: {fileID: 11400000, guid: 16357736a44584e44af2732ac8c748c2, type: 2}
-  obstaculoTile: {fileID: 11400000, guid: 71b12137c363777489d462105bee72bd, type: 2}
-  enemigoPrefab: {fileID: 160094935}
-  anchoNivel: 9
-  frecuenciaPlataformas: 10
+  wallObjectPrefab: {fileID: 7501505536229789051, guid: 0e143a9c2b974d4478c7f43796efbd31, type: 3}
+  anchoNivel: 12
+  anchoPlataforma: 5
+  frecuenciaPlataformas: 8
   alturaMaximaPlataforma: 3
-  probabilidadEnemigo: 0.02
-  probabilidadObstaculo: 0.2
-  anchuraPlataforma: 4
   jugador: {fileID: 1627284210}
   distanciaParaGenerar: 15
+  probabilidadObjetoPared: 0.3
 --- !u!1 &858312458
 GameObject:
   m_ObjectHideFlags: 0
@@ -5881,8 +5880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1627284207}
-  speedX: 5
   speedlimit: 10
+  speedX: 5
   isMoving: 0
 --- !u!212 &1627284209
 SpriteRenderer:
