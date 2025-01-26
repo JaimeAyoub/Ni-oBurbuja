@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Background
   - Ground
-  - 
+  - Trap
   - 
   - 
   - 
@@ -54,4 +54,7 @@ TagManager:
     locked: 0
   - name: Props
     uniqueID: 2894324401
+    locked: 0
+  - name: Praps
+    uniqueID: 2445155149
     locked: 0
