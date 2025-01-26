@@ -27,7 +27,7 @@ public class EnemyPatrol : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.transform.position, Vector2.down, 0.4f, jasbcdhasdhkaisb);
         RaycastHit2D hitwall = Physics2D.Raycast(wallCheck.transform.position, Vector2.right, 0.4f);
-        Debug.Log(hitwall.collider);
+        //Debug.Log(hitwall.collider);
         if(!hit.collider)
         {
             Flip();
