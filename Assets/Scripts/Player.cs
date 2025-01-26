@@ -14,7 +14,13 @@ public class Player : MonoBehaviour
     public float speedX;
     public float speedlimit;
 
+
+    public Animator playerAnimator;
+    public bool isPlayerRunning;
+
     public bool isMoving;
+
+    private bool isFacingRight = true;
 
     //public Vector2 friction;
     //private float TotalVelocity;
@@ -30,12 +36,46 @@ public class Player : MonoBehaviour
     
     void Update()
     {
-       Move();
-       // Debug.Log(rb.);
+        Move();
+        // Debug.Log(rb.);
+        HandleAnimationRunning();
+        if(Input.GetAxis("Horizontal") < 0 && isFacingRight)
+        {
+            Flip(); 
+        }else if (Input.GetAxis("Horizontal") >= 0 && !isFacingRight)
+        {  isFacingRight = true;}
+
+        if (isFacingRight)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+    }
+
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+    }
+
+    private void HandleAnimationRunning()
+    {
+        if (Input.GetAxis("Horizontal") != 0)
+        {
+            playerAnimator.SetBool("IsPlayerRunning", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("IsPlayerRunning", false);
+        }
     }
 
     private void Move()
     {
+        isPlayerRunning = true;
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
         rb.drag = 0;
     }

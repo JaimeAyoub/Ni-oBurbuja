@@ -132,7 +132,7 @@ ScriptedImporter:
       y: 27
       width: 15
       height: 15
-    spriteID: c0924a0896eeadb4586cb1b6654ea20c
+    spriteID: 6a50edc73841acf4abfa56676128add1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -152,7 +152,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 16
-    spriteID: d20d0052d833b0749851b63cbdc76c4b
+    spriteID: 6b6cee3a54a89b747a4090e59c0ad6f6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -172,7 +172,7 @@ ScriptedImporter:
       y: 4
       width: 16
       height: 15
-    spriteID: 1003e01a29b2e2946a4ed273adcc5a9b
+    spriteID: 0cea7f51e7dbe2e4e9cdafd5d9a4f78f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -192,7 +192,7 @@ ScriptedImporter:
       y: 28
       width: 16
       height: 16
-    spriteID: bc7072e87b15c0149875d8182c74434b
+    spriteID: b870768ed7711d048848a27466f5cd41
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,7 +218,7 @@ ScriptedImporter:
         y: 1
         width: 15
         height: 15
-      spriteId: c0924a0896eeadb4586cb1b6654ea20c
+      spriteId: 6a50edc73841acf4abfa56676128add1
     - name: SpriteBotella_Frame_1
       frameIndex: 1
       additiveSortOrder: 0
@@ -227,7 +227,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: d20d0052d833b0749851b63cbdc76c4b
+      spriteId: 6b6cee3a54a89b747a4090e59c0ad6f6
     - name: SpriteBotella_Frame_2
       frameIndex: 2
       additiveSortOrder: 0
@@ -236,7 +236,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 15
-      spriteId: 1003e01a29b2e2946a4ed273adcc5a9b
+      spriteId: 0cea7f51e7dbe2e4e9cdafd5d9a4f78f
     - name: SpriteBotella_Frame_3
       frameIndex: 3
       additiveSortOrder: 0
@@ -245,7 +245,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: bc7072e87b15c0149875d8182c74434b
+      spriteId: b870768ed7711d048848a27466f5cd41
     linkedCells: []
     parentIndex: -1
   platformSettings: []
