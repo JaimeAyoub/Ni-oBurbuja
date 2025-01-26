@@ -16,7 +16,7 @@ public class WeaScript : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Player>().Die();
+            //collision.gameObject.GetComponent<Player>().Die();
         }
     }
 

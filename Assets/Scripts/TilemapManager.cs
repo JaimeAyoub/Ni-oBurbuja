@@ -7,6 +7,7 @@ public class TilemapManager : MonoBehaviour
     public Tile plataformaTile; // Tile para plataformas
     public Tile paredTile; // Tile para las paredes
     public Tile obstaculoTile; // Tile para obstáculos
+    public GameObject aguaPrefab; // Prefab para agua
     public GameObject enemigoPrefab; // Prefab para los enemigos
 
     public int anchoNivel = 10; // Ancho del nivel en tiles
@@ -47,12 +48,28 @@ public class TilemapManager : MonoBehaviour
         {
             // Generar una posición aleatoria para la plataforma dentro del ancho del nivel
             int xCentro = Random.Range(-anchoNivel / 2, anchoNivel / 2);
+            bool aguaGenerada = false; // Bandera para asegurarse de que solo aparezca un agua por plataforma
 
             // Generar tiles consecutivos para una plataforma más ancha
             for (int xOffset = -anchuraPlataforma / 2; xOffset <= anchuraPlataforma / 2; xOffset++)
             {
                 Vector3Int plataformaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos), 0);
                 tilemap.SetTile(plataformaPos, plataformaTile);
+
+                // Solo generar un agua por plataforma
+                if (!aguaGenerada && Random.value < 0.2f) // Ajusta la probabilidad aquí
+                {
+                    Vector3Int aguaPos = new Vector3Int(xCentro + xOffset, Mathf.RoundToInt(yPos) + 1, 0);
+
+                    // Verificar si la posición encima de la plataforma está vacía antes de colocar el agua
+                    if (tilemap.GetTile(aguaPos) == null)  // Si no hay ningún tile, colocar agua
+                    {
+                        // Instanciar el prefab de agua
+                        Vector3 aguaWorldPos = tilemap.CellToWorld(aguaPos);
+                        Instantiate(aguaPrefab, aguaWorldPos, Quaternion.identity);
+                        aguaGenerada = true; // Marca que el agua ya se ha generado
+                    }
+                }
             }
 
             // Colocar enemigo con una probabilidad (en el centro de la plataforma)
@@ -84,4 +101,5 @@ public class TilemapManager : MonoBehaviour
             tilemap.SetTile(paredDerecha, paredTile);
         }
     }
+
 }
