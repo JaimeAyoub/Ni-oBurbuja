@@ -6,7 +6,10 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject EndMenu;
     public AudioManager audioManager;
+   
 
+
+    public static MenuManager InstanceMenuManager;
     public void Awake()
     {
         EndMenu = GameObject.Find("EndGameMenu");
@@ -20,7 +23,7 @@ public class MenuManager : MonoBehaviour
     public void OpenEndMenu()
     { EndMenu.SetActive(true);
         Time.timeScale = 0f;
-        audioManager.PlaySFX(audioManager.BGM);
+        //audioManager.PlaySFX(audioManager.BGM);
        
     }
 

@@ -9,9 +9,11 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    //public AudioManager audioManager;
+
     private float inputX;
 
-
+    public MenuManager menuManager;
     public float speedX;
     public float speedlimit;
 
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     {
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
+        //audioManager.PlaySFX(audioManager.BGM);
     }
 
 
@@ -67,11 +70,23 @@ public class Player : MonoBehaviour
             //Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            MenuManager.InstanceMenuManager.OpenEndMenu();
+            menuManager.OpenEndMenu();
+        }
+        if (collision.gameObject.CompareTag("End"))
+        {
+            menuManager.OpenEndMenu();
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("End"))
+        {
+            menuManager.OpenEndMenu();
+        }
 
-   
+    }
+
+
     void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -94,6 +109,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        
         isPlayerRunning = true;
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speedX, -5f));
         if (Input.GetKey(KeyCode.K))
@@ -117,7 +133,7 @@ public class Player : MonoBehaviour
         rb.AddForce(Vector2.up * 5);
     }
 
-
+    
 
     #region JAIME PHYSICS
     //private void Move()
